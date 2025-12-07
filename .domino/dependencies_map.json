@@ -1,0 +1,19 @@
+{
+    "group0": {
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "pieces": [
+            "PreprocessSolargisPiece",
+            "EvaluateAndPlotPiece",
+            "TrainXGBoostPiece",
+            "RegisterModelPiece",
+            "FetchSolargisDataPiece",
+            "RunSolarForecastPiece",
+            "NotifyTeamPiece"
+        ],
+        "secrets": [],
+        "source_image": "ghcr.io/stanovo/somes-domino-pieces-test:0.1.1-group0"
+    }
+}

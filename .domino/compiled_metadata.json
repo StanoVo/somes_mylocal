@@ -1,0 +1,615 @@
+{
+    "PreprocessSolargisPiece": {
+        "name": "PreprocessSolargisPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "Solargis"
+        ],
+        "style": {
+            "node_label": "Preprocess Solargis Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:database",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Preprocess Solargis data",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "description": "Preprocess Solargis Data Piece Input Model",
+            "properties": {
+                "input_path": {
+                    "default": "/home/shared_storage/data/raw_solargis.csv",
+                    "description": "The path to the input Solargis raw data file ",
+                    "title": "Path to raw data file",
+                    "type": "string"
+                },
+                "output_path": {
+                    "default": "/home/shared_storage/data/processed_solargis.csv",
+                    "description": "The path to the output processed Solargis data file",
+                    "title": "Path to output data file",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "file_path": {
+                    "description": "The path to the output CSV file",
+                    "title": "File Path",
+                    "type": "string"
+                },
+                "processed_rows": {
+                    "title": "Processed Rows",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "file_path",
+                "processed_rows"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/PreprocessSolargisPiece"
+    },
+    "EvaluateAndPlotPiece": {
+        "name": "EvaluateAndPlotPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "XGBoost",
+            "Evaluation",
+            "Plotting"
+        ],
+        "style": {
+            "node_label": "Evaluate And Plot Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:chart-line",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Evaluates model and generates plots",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "properties": {
+                "data_path": {
+                    "default": "/home/shared_storage/data/DataForComparison.csv",
+                    "description": "The path to data file for prediction",
+                    "title": "Path to data file",
+                    "type": "string"
+                },
+                "model_path": {
+                    "default": "/home/shared_storage/data/model.pkl",
+                    "description": "The path to forecast model file",
+                    "title": "Path to model file",
+                    "type": "string"
+                },
+                "metrics_out": {
+                    "default": "/home/shared_storage/data/metrics.json",
+                    "description": "The path to metrics output file",
+                    "title": "Path to metrics output file",
+                    "type": "string"
+                },
+                "plot_out": {
+                    "default": "/home/shared_storage/data/comparison.png",
+                    "description": "The path to graphical comparison output file",
+                    "title": "Path to graphical comparison output file",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "metrics_file": {
+                    "default": "",
+                    "description": "The path to the metrics json file",
+                    "title": "Metrics File",
+                    "type": "string"
+                },
+                "plot_file": {
+                    "default": "",
+                    "description": "The path to the graphical comparison output file",
+                    "title": "Plot File",
+                    "type": "string"
+                },
+                "mae": {
+                    "title": "Mae",
+                    "type": "number"
+                },
+                "r2": {
+                    "title": "R2",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "mae",
+                "r2"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/EvaluateAndPlotPiece"
+    },
+    "TrainXGBoostPiece": {
+        "name": "TrainXGBoostPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "XGBoost",
+            "Model Training",
+            "Solargis"
+        ],
+        "style": {
+            "node_label": "Train XGBoost Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:brain",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Train XGBoost model",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "description": "Train XGBoost Piece Input Model",
+            "properties": {
+                "data_path": {
+                    "default": "/home/shared_storage/data/processed_solargis.csv",
+                    "description": "The path to preprocessed Solargis data file",
+                    "title": "Path to preprocessed data file",
+                    "type": "string"
+                },
+                "model_out": {
+                    "default": "/home/shared_storage/data/model.pkl",
+                    "description": "The path to Model file",
+                    "title": "Path to model file",
+                    "type": "string"
+                },
+                "log_out": {
+                    "default": "/home/shared_storage/data/training_log.txt",
+                    "description": "The path to training log file",
+                    "title": "Path to model training log file",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "description": "Train XGBoost Piece Output Model",
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "model_file_path": {
+                    "description": "The path to the model file",
+                    "title": "Model File Path",
+                    "type": "string"
+                },
+                "train_log_path": {
+                    "description": "The path to the training log file",
+                    "title": "Train Log Path",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "model_file_path",
+                "train_log_path"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/TrainXGBoostPiece"
+    },
+    "RegisterModelPiece": {
+        "name": "RegisterModelPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "Register model piece"
+        ],
+        "style": {
+            "node_label": "Register Model Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:database-plus",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Register model in Domino",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "properties": {
+                "model_path": {
+                    "default": "/home/shared_storage/data/model.pkl",
+                    "description": "The path to forecast model file",
+                    "title": "Path to model file",
+                    "type": "string"
+                },
+                "metrics_path": {
+                    "default": "/home/shared_storage/data/metrics.json",
+                    "description": "The path to metrics file",
+                    "title": "Path to metrics file",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "SolarForecastModel",
+                    "title": "Model name",
+                    "type": "string"
+                },
+                "description": {
+                    "default": "XGBoost model for solar forecasting",
+                    "title": "Model description",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "model_version_id": {
+                    "default": "",
+                    "description": "Version ID of the registered model",
+                    "title": "Model Version Id",
+                    "type": "string"
+                },
+                "registry_url": {
+                    "default": "",
+                    "description": "The URL to the model registry entry",
+                    "title": "Registry Url",
+                    "type": "string"
+                }
+            },
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/RegisterModelPiece"
+    },
+    "FetchSolargisDataPiece": {
+        "name": "FetchSolargisDataPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "Solargis"
+        ],
+        "style": {
+            "node_label": "Fetch Solargis Data Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:database",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Downloads Solargis data",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "description": "Fetch Solargis Data Piece Input Model",
+            "properties": {
+                "input_path": {
+                    "default": "/home/shared_storage/input_data/InputSolargisFile.docx",
+                    "description": "The path to input meteo data files",
+                    "title": "Path to input data files",
+                    "type": "string"
+                },
+                "output_path": {
+                    "default": "/home/shared_storage/data/raw_solargis.csv",
+                    "description": "The path to output meteo data file",
+                    "title": "Path to output data file",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "description": "Fetch Solargis Data Piece Output Model",
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "file_path": {
+                    "description": "The path to the output CSV file",
+                    "title": "File Path",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "file_path"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/FetchSolargisDataPiece"
+    },
+    "RunSolarForecastPiece": {
+        "name": "RunSolarForecastPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [
+            "Solar",
+            "forecast",
+            "Renewable Energy"
+        ],
+        "style": {
+            "node_label": "Run Solar Forecast Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:sun",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Generates next-day solar forecast",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "properties": {
+                "model_path": {
+                    "default": "/home/shared_storage/data/model.pkl",
+                    "description": "The path to forecast model file",
+                    "title": "Path to model file",
+                    "type": "string"
+                },
+                "features_csv": {
+                    "default": "/home/shared_storage/data/forecast_features.csv",
+                    "description": "The path to CSV file containing features for forecast",
+                    "title": "Path to features CSV file",
+                    "type": "string"
+                },
+                "output_csv": {
+                    "default": "/home/shared_storage/data/solar_forecast.csv",
+                    "description": "The path to forecast CSV output file",
+                    "title": "Path to forecast CSV output file",
+                    "type": "string"
+                },
+                "output_plot": {
+                    "default": "/home/shared_storage/data/forecast.png",
+                    "description": "The path to graphical forecast output file",
+                    "title": "Path to graphical forecast output file",
+                    "type": "string"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "forecast_file": {
+                    "default": "",
+                    "description": "The path to the forecast CSV output file",
+                    "title": "Forecast File",
+                    "type": "string"
+                },
+                "plot_file": {
+                    "default": "",
+                    "description": "The path to the graphical comparison output file",
+                    "title": "Plot File",
+                    "type": "string"
+                }
+            },
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/RunSolarForecastPiece"
+    },
+    "NotifyTeamPiece": {
+        "name": "NotifyTeamPiece",
+        "dependency": {
+            "dockerfile": null,
+            "requirements_file": "requirements_0.txt"
+        },
+        "tags": [],
+        "style": {
+            "node_label": "Notify Team Piece",
+            "node_type": "default",
+            "node_style": {
+                "backgroundColor": "#ebebeb"
+            },
+            "useIcon": true,
+            "icon_class_name": "fa-solid:bell",
+            "iconStyle": {
+                "cursor": "pointer"
+            }
+        },
+        "description": "Send notifications",
+        "dependencies_group": "0",
+        "container_resources": {
+            "requests": {
+                "cpu": 100,
+                "memory": 128
+            },
+            "limits": {
+                "cpu": 500,
+                "memory": 512
+            }
+        },
+        "input_schema": {
+            "properties": {
+                "metrics_path": {
+                    "default": "/home/shared_storage/data/metrics.json",
+                    "description": "The path to metrics file",
+                    "title": "Path to metrics file",
+                    "type": "string"
+                },
+                "webhook_url": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "",
+                    "description": "The path to webhook url for Slack notifications",
+                    "title": "Path to webhook url"
+                }
+            },
+            "title": "InputModel",
+            "type": "object"
+        },
+        "output_schema": {
+            "properties": {
+                "message": {
+                    "default": "",
+                    "description": "Output message to log",
+                    "title": "Message",
+                    "type": "string"
+                },
+                "notification_sent": {
+                    "title": "Notification Sent",
+                    "type": "boolean"
+                },
+                "recipients": {
+                    "title": "Recipients",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "notification_sent",
+                "recipients"
+            ],
+            "title": "OutputModel",
+            "type": "object"
+        },
+        "secrets_schema": null,
+        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/NotifyTeamPiece"
+    }
+}
