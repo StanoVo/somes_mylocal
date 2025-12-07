@@ -77,7 +77,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/PreprocessSolargisPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/PreprocessSolargisPiece"
     },
     "EvaluateAndPlotPiece": {
         "name": "EvaluateAndPlotPiece",
@@ -181,7 +181,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/EvaluateAndPlotPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/EvaluateAndPlotPiece"
     },
     "TrainXGBoostPiece": {
         "name": "TrainXGBoostPiece",
@@ -271,7 +271,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/TrainXGBoostPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/TrainXGBoostPiece"
     },
     "RegisterModelPiece": {
         "name": "RegisterModelPiece",
@@ -359,7 +359,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/RegisterModelPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/RegisterModelPiece"
     },
     "FetchSolargisDataPiece": {
         "name": "FetchSolargisDataPiece",
@@ -399,8 +399,14 @@
             "properties": {
                 "input_path": {
                     "default": "/home/shared_storage/input_data/InputSolargisFile.docx",
-                    "description": "The path to input meteo data files",
+                    "description": "The path to input meteo data files (supports wildcards: *.docx, *.csv, or directory paths)",
                     "title": "Path to input data files",
+                    "type": "string"
+                },
+                "input_filetype": {
+                    "default": "docx",
+                    "description": "The type of input file: 'docx' for Word documents or 'csv' for CSV files",
+                    "title": "Input file type",
                     "type": "string"
                 },
                 "output_path": {
@@ -435,7 +441,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/FetchSolargisDataPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/FetchSolargisDataPiece"
     },
     "RunSolarForecastPiece": {
         "name": "RunSolarForecastPiece",
@@ -527,7 +533,7 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/RunSolarForecastPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/RunSolarForecastPiece"
     },
     "NotifyTeamPiece": {
         "name": "NotifyTeamPiece",
@@ -610,6 +616,6 @@
             "type": "object"
         },
         "secrets_schema": null,
-        "source_url": "https://github.com/StanoVo/somes-domino-pieces-test/tree/main/pieces/NotifyTeamPiece"
+        "source_url": "https://github.com/StanoVo/somes_mylocal/tree/main/pieces/NotifyTeamPiece"
     }
 }
