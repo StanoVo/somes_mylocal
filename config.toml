@@ -1,5 +1,5 @@
 [repository]
 REGISTRY_NAME = "stanovo"
 REPOSITORY_NAME = "somes_mylocal"
-REPOSITORY_LABEL = "SoMES - Self Optimizing Microgrid Energy Scheduler MyLocal"
-VERSION = "0.1.2"
+REPOSITORY_LABEL = "SoMES Pieces Repository"
+VERSION = "0.1.3"
