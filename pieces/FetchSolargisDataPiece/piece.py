@@ -37,7 +37,7 @@ class FetchSolargisDataPiece(BasePiece):
     
     def _read_csv_files(self, file_paths):
         """Read and concatenate data from CSV files."""
-        dfs = []
+        csv_data = []
         
         for csv_file in file_paths:
             if not csv_file.exists():
@@ -45,13 +45,22 @@ class FetchSolargisDataPiece(BasePiece):
                 continue
                 
             print(f"[INFO] Processing CSV file: {csv_file}")
-            df = pd.read_csv(csv_file)
-            dfs.append(df)
+            csv_started = False
+            
+            # Read file line by line
+            with open(csv_file, 'r') as f:
+                for line in f:
+                    line = line.strip()
+                    # Check if we've reached the CSV data section
+                    if "#Data:" in line:
+                        csv_started = True
+                        continue
+                    
+                    # If we're in the CSV section, store the line
+                    if csv_started and line:
+                        csv_data.append(line)
         
-        if dfs:
-            combined_df = pd.concat(dfs, ignore_index=True)
-            return combined_df.values.tolist()
-        return []
+        return csv_data
     
     def _resolve_file_paths(self, input_path_str, file_type):
         """Resolve wildcard patterns and return list of matching files."""
