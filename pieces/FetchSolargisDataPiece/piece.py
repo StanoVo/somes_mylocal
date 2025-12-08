@@ -3,8 +3,6 @@ from .models import InputModel, OutputModel
 import pandas as pd
 from pathlib import Path
 from docx import Document
-from glob import glob
-
 
 class FetchSolargisDataPiece(BasePiece):
     
@@ -99,11 +97,9 @@ class FetchSolargisDataPiece(BasePiece):
         
         # Resolve wildcard patterns in input path
         if '*' in str(input_path) or '?' in str(input_path):
-            # Handle wildcard patterns
-            matching_files = glob(str(input_path))
-            if not matching_files:
-                return []
-            files = [Path(f) for f in matching_files if f.endswith(file_extension)]
+            # Handle wildcard patterns using Path.glob
+            files = [f for f in input_path.parent.glob(input_path.name) 
+                     if f.suffix == file_extension]
         else:
             # Check if it's a directory
             if input_path.is_dir():
