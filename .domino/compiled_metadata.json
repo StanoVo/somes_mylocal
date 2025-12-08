@@ -404,14 +404,14 @@
                     "type": "string"
                 },
                 "input_filetype": {
-                    "default": "docx",
+                    "default": "csv",
                     "description": "The type of input file: 'docx' for Word documents or 'csv' for CSV files",
                     "title": "Input file type",
                     "type": "string"
                 },
                 "output_path": {
                     "default": "/home/shared_storage/data/raw_solargis.csv",
-                    "description": "The path to output meteo data file",
+                    "description": "The path to raw Solargis data file",
                     "title": "Path to output data file",
                     "type": "string"
                 }
