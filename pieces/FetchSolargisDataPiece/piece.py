@@ -20,19 +20,33 @@ class FetchSolargisDataPiece(BasePiece):
             print(f"[INFO] Processing DOCX document: {doc_file}")
             doc = Document(doc_file)
             csv_started = False
-        
-            # Process each paragraph in the document
-            for paragraph in doc.paragraphs:
-                line = paragraph.text.strip()
-                # Check if we've reached the CSV data section
-                if "#Data:" in line:
-                    csv_started = True
-                    continue
 
-                # If we're in the CSV section, store the line
-                if csv_started and line:
-                    csv_data.append(line)
-        
+            if doc_file == file_paths[0]:
+                # 1st doc file - we keep CSV header line                       
+                # Process each paragraph in the document
+                for paragraph in doc.paragraphs:
+                    line = paragraph.text.strip()
+                    # Check if we've reached the CSV data section
+                    if "#Data:" in line:
+                        csv_started = True
+                        continue
+
+                    # If we're in the CSV section, store the line
+                    if csv_started and line:
+                        csv_data.append(line)
+            else:
+                # next doc files - we don't keep CSV header line
+                # Process each paragraph in the document
+                for paragraph in doc.paragraphs:
+                    line = paragraph.text.strip()
+                    # Check if we've reached the CSV data section
+                    if line.startswith("Date;"):
+                        csv_started = True
+                        continue
+                    # If we're in the CSV section, store the line
+                    if csv_started and line:
+                        csv_data.append(line)
+            
         return csv_data
     
     def _read_csv_files(self, file_paths):
@@ -46,20 +60,36 @@ class FetchSolargisDataPiece(BasePiece):
                 
             print(f"[INFO] Processing CSV file: {csv_file}")
             csv_started = False
+
+            if csv_file == file_paths[0]:
+                # 1st csv_file - we keep CSV header line
             
-            # Read file line by line
-            with open(csv_file, 'r') as f:
-                for line in f:
-                    line = line.strip()
-                    # Check if we've reached the CSV data section
-                    if "#Data:" in line:
-                        csv_started = True
-                        continue
-                    
-                    # If we're in the CSV section, store the line
-                    if csv_started and line:
-                        csv_data.append(line)
-        
+                # Read file line by line
+                with open(csv_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        # Check if we've reached the CSV data section
+                        if "#Data:" in line:
+                            csv_started = True
+                            continue
+                        
+                        # If we're in the CSV section, store the line
+                        if csv_started and line:
+                            csv_data.append(line)
+            else:
+                # next csv_files - we don't keep CSV header line
+                # Read file line by line
+                with open(csv_file, 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        # Check if we've reached the CSV data section
+                        if line.startswith("Date;"):
+                            csv_started = True
+                            continue
+                        # If we're in the CSV section, store the line
+                        if csv_started and line:
+                            csv_data.append(line)
+          
         return csv_data
     
     def _resolve_file_paths(self, input_path_str, file_type):

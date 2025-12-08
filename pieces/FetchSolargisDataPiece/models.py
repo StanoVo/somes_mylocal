@@ -12,14 +12,14 @@ class InputModel(BaseModel):
 
     input_filetype: str = Field(
         title="Input file type",
-        default='docx',
+        default='csv',
         description="The type of input file: 'docx' for Word documents or 'csv' for CSV files"
     )    
 
     output_path: str = Field(
         title="Path to output data file",
         default='/home/shared_storage/data/raw_solargis.csv',
-        description="The path to output meteo data file"
+        description="The path to raw Solargis data file"
     )
     
 class OutputModel(BaseModel):
