@@ -1,6 +1,7 @@
 from domino.base_piece import BasePiece
 from .models import InputModel, OutputModel
 import pandas as pd
+from pathlib import Path
 import joblib
 import json
 import matplotlib.pyplot as plt
