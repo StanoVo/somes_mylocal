@@ -40,12 +40,6 @@
                     "description": "The path to the input Solargis raw data file ",
                     "title": "Path to raw data file",
                     "type": "string"
-                },
-                "output_path": {
-                    "default": "/home/shared_storage/data/processed_solargis.csv",
-                    "description": "The path to the output processed Solargis data file",
-                    "title": "Path to output data file",
-                    "type": "string"
                 }
             },
             "title": "InputModel",
@@ -117,30 +111,20 @@
         "input_schema": {
             "properties": {
                 "data_path": {
-                    "default": "/home/shared_storage/data/DataForComparison.csv",
                     "description": "The path to data file for prediction",
                     "title": "Path to data file",
                     "type": "string"
                 },
                 "model_path": {
-                    "default": "/home/shared_storage/data/model.pkl",
                     "description": "The path to forecast model file",
                     "title": "Path to model file",
                     "type": "string"
-                },
-                "metrics_out": {
-                    "default": "/home/shared_storage/data/metrics.json",
-                    "description": "The path to metrics output file",
-                    "title": "Path to metrics output file",
-                    "type": "string"
-                },
-                "plot_out": {
-                    "default": "/home/shared_storage/data/comparison.png",
-                    "description": "The path to graphical comparison output file",
-                    "title": "Path to graphical comparison output file",
-                    "type": "string"
                 }
             },
+            "required": [
+                "data_path",
+                "model_path"
+            ],
             "title": "InputModel",
             "type": "object"
         },
@@ -152,16 +136,16 @@
                     "title": "Message",
                     "type": "string"
                 },
-                "metrics_file": {
+                "metrics_file_path": {
                     "default": "",
                     "description": "The path to the metrics json file",
-                    "title": "Metrics File",
+                    "title": "Metrics File Path",
                     "type": "string"
                 },
-                "plot_file": {
+                "plot_file_path": {
                     "default": "",
                     "description": "The path to the graphical comparison output file",
-                    "title": "Plot File",
+                    "title": "Plot File Path",
                     "type": "string"
                 },
                 "mae": {
@@ -225,18 +209,6 @@
                     "default": "/home/shared_storage/data/processed_solargis.csv",
                     "description": "The path to preprocessed Solargis data file",
                     "title": "Path to preprocessed data file",
-                    "type": "string"
-                },
-                "model_out": {
-                    "default": "/home/shared_storage/data/model.pkl",
-                    "description": "The path to Model file",
-                    "title": "Path to model file",
-                    "type": "string"
-                },
-                "log_out": {
-                    "default": "/home/shared_storage/data/training_log.txt",
-                    "description": "The path to training log file",
-                    "title": "Path to model training log file",
                     "type": "string"
                 }
             },
@@ -407,12 +379,6 @@
                     "default": "csv",
                     "description": "The type of input file: 'docx' for Word documents or 'csv' for CSV files",
                     "title": "Input file type",
-                    "type": "string"
-                },
-                "output_path": {
-                    "default": "/home/shared_storage/data/raw_solargis.csv",
-                    "description": "The path to raw Solargis data file",
-                    "title": "Path to output data file",
                     "type": "string"
                 }
             },
