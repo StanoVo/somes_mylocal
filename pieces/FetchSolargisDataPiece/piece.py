@@ -148,63 +148,22 @@ class FetchSolargisDataPiece(BasePiece):
             df = pd.DataFrame(csv_data)
             message = f"Files processed successfully, {len(df)} rows found."
             print(f"[SUCCESS] {message}")
-            output_data_file = Path(input_data.output_path) 
-            #output_data_file.parent.mkdir(parents=True, exist_ok=True)
-            df.to_csv(output_data_file, index=False, header=False)
+            file_path = str(Path(self.results_path) / "raw_solargis.csv")
+            df.to_csv(file_path, index=False, header=False)
             
         else:
             message = f"No data found in {input_data.input_filetype.upper()} files."
             print(f"[WARNING] {message}")
-            output_data_file = None
+            file_path = None
             
         # Set display result
         self.display_result = {
             "file_type": "csv",
-            "file_path": str(output_data_file) if csv_data else ""
+            "file_path": file_path if csv_data else ""
         }
 
         # Return output
         return OutputModel(
             message=message,
-            file_path=str(output_data_file) if csv_data else ""
+            file_path=file_path if csv_data else ""
         )
-
-# import boto3
-# import os
-# from urllib.parse import urlparse
-# from models import InputModel, OutputModel
-
-# def main(input_model: InputModel) -> OutputModel:
-#     print(f"[INFO] Fetching data from {input_model.s3_path} → {input_model.output_path}")
-    
-#     # Parse S3 path
-#     parsed = urlparse(input_model.s3_path, allow_fragments=False)
-#     if parsed.scheme == "s3":
-#         bucket = parsed.netloc
-#         key = parsed.path.lstrip('/')
-        
-#         # Initialize S3 client
-#         s3 = boto3.client('s3')
-        
-#         # Create output directory if not exists
-#         os.makedirs(os.path.dirname(input_model.output_path), exist_ok=True)
-        
-#         # Download file
-#         s3.download_file(bucket, key, input_model.output_path)
-#         print(f"[SUCCESS] Downloaded {input_model.s3_path}")
-        
-#         return OutputModel(
-#             message=f"Successfully downloaded {input_model.s3_path}",
-#             downloaded_file=input_model.output_path
-#         )
-#     else:
-#         raise ValueError("Only S3 paths are supported")
-
-# if __name__ == "__main__":
-#     # For testing purposes
-#     input_data = InputModel(
-#         s3_path="s3://bucket/data.csv",
-#         output_path="/mnt/artifacts/data.csv"
-#     )
-#     result = main(input_data)
-#     print(result)

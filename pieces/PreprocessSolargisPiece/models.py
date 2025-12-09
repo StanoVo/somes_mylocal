@@ -10,12 +10,6 @@ class InputModel(BaseModel):
         description="The path to the input Solargis raw data file "
     )    
 
-    output_path: str = Field(
-        title="Path to output data file",
-        default='/home/shared_storage/data/processed_solargis.csv',
-        description="The path to the output processed Solargis data file"
-    )
-
 class OutputModel(BaseModel):
     message: str = Field(
         default="",

@@ -9,16 +9,6 @@ class InputModel(BaseModel):
         default='/home/shared_storage/data/processed_solargis.csv',
         description="The path to preprocessed Solargis data file"
     )   
-    model_out: str = Field(
-        title="Path to model file",
-        default='/home/shared_storage/data/model.pkl',
-        description="The path to Model file"
-    )
-    log_out: str = Field(
-        title="Path to model training log file",
-        default='/home/shared_storage/data/training_log.txt',
-        description="The path to training log file"
-    )
 
 class OutputModel(BaseModel):
     """
