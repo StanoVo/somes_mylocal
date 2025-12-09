@@ -114,7 +114,7 @@ class FetchSolargisDataPiece(BasePiece):
     
     def piece_function(self, input_data: InputModel):
 
-        print(f"[INFO] Fetching data from {input_data.input_path} → {input_data.output_path}")
+        print(f"[INFO] Fetching data from {input_data.input_path}")
         print(f"[INFO] File type: {input_data.input_filetype}")
 
         csv_data = []

@@ -9,7 +9,7 @@ class PreprocessSolargisPiece(BasePiece):
     
     def piece_function(self, input_data: InputModel):
 
-        print(f"[INFO] Preprocessing {input_data.input_path} → {input_data.output_path}")
+        print(f"[INFO] Preprocessing {input_data.input_path}")
     
         # Load data
         df = pd.read_csv(input_data.input_path, sep=';', parse_dates={'datetime': ['Date', 'Time']}, dayfirst=True)
