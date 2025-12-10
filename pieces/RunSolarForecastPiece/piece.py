@@ -26,7 +26,7 @@ class RunSolarForecastPiece(BasePiece):
     
         # Save forecast
         forecast_file_path = str(Path(self.results_path) / "solar_forecast.csv")
-        df[['datetime', 'PVOUT' 'PVOUT_kW']].to_csv(forecast_file_path, index=False)
+        df[['datetime', 'PVOUT', 'PVOUT_kW']].to_csv(forecast_file_path, index=False)
 
         print(f"[SUCCESS] Forecast saved to {forecast_file_path}")
     
