@@ -370,7 +370,7 @@
             "description": "Fetch Solargis Data Piece Input Model",
             "properties": {
                 "input_path": {
-                    "default": "/home/shared_storage/input_data/InputSolargisFile.docx",
+                    "default": "/home/shared_storage/input_data/InputSolargisFile.csv",
                     "description": "The path to input meteo data files (supports wildcards: *.docx, *.csv, or directory paths)",
                     "title": "Path to input data files",
                     "type": "string"
@@ -447,30 +447,20 @@
         "input_schema": {
             "properties": {
                 "model_path": {
-                    "default": "/home/shared_storage/data/model.pkl",
                     "description": "The path to forecast model file",
                     "title": "Path to model file",
                     "type": "string"
                 },
                 "features_csv": {
-                    "default": "/home/shared_storage/data/forecast_features.csv",
                     "description": "The path to CSV file containing features for forecast",
                     "title": "Path to features CSV file",
                     "type": "string"
-                },
-                "output_csv": {
-                    "default": "/home/shared_storage/data/solar_forecast.csv",
-                    "description": "The path to forecast CSV output file",
-                    "title": "Path to forecast CSV output file",
-                    "type": "string"
-                },
-                "output_plot": {
-                    "default": "/home/shared_storage/data/forecast.png",
-                    "description": "The path to graphical forecast output file",
-                    "title": "Path to graphical forecast output file",
-                    "type": "string"
                 }
             },
+            "required": [
+                "model_path",
+                "features_csv"
+            ],
             "title": "InputModel",
             "type": "object"
         },
