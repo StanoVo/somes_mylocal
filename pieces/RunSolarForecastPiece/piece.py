@@ -3,6 +3,7 @@ from .models import InputModel, OutputModel
 import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 class RunSolarForecastPiece(BasePiece):
     
@@ -22,26 +23,30 @@ class RunSolarForecastPiece(BasePiece):
         df['PVOUT_kW'] = model.predict(X)
     
         # Save forecast
-        df[['datetime', 'PVOUT_kW']].to_csv(input_data.output_csv, index=False)
+        forecast_file_path = str(Path(self.results_path) / "solar_forecast.csv")
+        df[['datetime', 'PVOUT_kW']].to_csv(forecast_file_path, index=False)
+
+        print(f"[SUCCESS] Forecast saved to {forecast_file_path}")
     
         # Plot
         plt.figure(figsize=(10, 4))
         plt.plot(df['datetime'], df['PVOUT_kW'], 'b-', label='Forecasted PV Output')
-        plt.title('Next-Day Solar Generation Forecast')
+        plt.title('Next-Days Solar Generation Forecast')
         plt.xlabel('Time')
         plt.ylabel('Power (kW)')
         plt.xticks(rotation=45)
         plt.grid(alpha=0.3)
         plt.tight_layout()
-        plt.savefig(input_data.output_plot)
+        plot_file_path = str(Path(self.results_path) / "solar_forecast.png")
+        plt.savefig(plot_file_path)
         plt.close()
         
-        print(f"[SUCCESS] Forecast saved to {input_data.output_csv}")
-        
+        print(f"[SUCCESS] Comparison forecast saved to {plot_file_path}")
+               
         return OutputModel(
             message=f"Forecast generated successfully",
-            forecast_file=input_data.output_csv,
-            plot_file=input_data.output_plot
+            forecast_file=forecast_file_path,
+            plot_file=plot_file_path
         )
 
 # Below is an alternative standalone script version of the same logic.
