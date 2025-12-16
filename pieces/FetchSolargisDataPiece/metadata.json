@@ -19,7 +19,7 @@
         "Solargis"
     ],
     "style": {
-        "node_label": "Fetch Solargis Data Piece",
+        "node_label": "Fetch Solargis Data",
         "icon_class_name": "fa-solid:database"
     }
 }

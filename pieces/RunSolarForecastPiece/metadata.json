@@ -21,7 +21,7 @@
         "Renewable Energy"
     ],
     "style": {
-        "node_label": "Run Solar Forecast Piece",
+        "node_label": "Run Solar Forecast",
         "icon_class_name": "fa-solid:sun"
     }
 }

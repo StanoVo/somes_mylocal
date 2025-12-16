@@ -19,7 +19,7 @@
         "Solargis"
     ],
     "style": {
-        "node_label": "Preprocess Solargis Piece",
+        "node_label": "Preprocess Solargis Data",
         "icon_class_name": "fa-solid:database"
     }
 }

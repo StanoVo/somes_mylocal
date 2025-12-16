@@ -21,7 +21,7 @@
         "Plotting"
     ],
     "style": {
-        "node_label": "Evaluate And Plot Piece",
+        "node_label": "Evaluate And Plot",
         "icon_class_name": "fa-solid:chart-line"
     }
 }

@@ -21,7 +21,7 @@
         "Solargis"
     ],
     "style": {
-        "node_label": "Train XGBoost Piece",
+        "node_label": "Train XGBoost Model",
         "icon_class_name":  "fa-solid:brain"
     }
 }

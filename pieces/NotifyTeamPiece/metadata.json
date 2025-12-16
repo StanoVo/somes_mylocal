@@ -16,7 +16,7 @@
         }
     },
     "style": {
-    "node_label": "Notify Team Piece",
+    "node_label": "Notify Team",
     "icon_class_name": "fa-solid:bell"
     }
 }

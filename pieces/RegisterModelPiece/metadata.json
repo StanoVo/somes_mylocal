@@ -19,7 +19,7 @@
         "Register model piece"
     ],
     "style": {
-        "node_label": "Register Model Piece",
+        "node_label": "Register Model",
         "icon_class_name": "fa-solid:database-plus"
     }
 }
