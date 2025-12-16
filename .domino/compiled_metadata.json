@@ -9,7 +9,7 @@
             "Solargis"
         ],
         "style": {
-            "node_label": "Preprocess Solargis Piece",
+            "node_label": "Preprocess Solargis Data",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -85,7 +85,7 @@
             "Plotting"
         ],
         "style": {
-            "node_label": "Evaluate And Plot Piece",
+            "node_label": "Evaluate And Plot",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -179,7 +179,7 @@
             "Solargis"
         ],
         "style": {
-            "node_label": "Train XGBoost Piece",
+            "node_label": "Train XGBoost Model",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -255,7 +255,7 @@
             "Register model piece"
         ],
         "style": {
-            "node_label": "Register Model Piece",
+            "node_label": "Register Model",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -343,7 +343,7 @@
             "Solargis"
         ],
         "style": {
-            "node_label": "Fetch Solargis Data Piece",
+            "node_label": "Fetch Solargis Data",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -421,7 +421,7 @@
             "Renewable Energy"
         ],
         "style": {
-            "node_label": "Run Solar Forecast Piece",
+            "node_label": "Run Solar Forecast",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
@@ -499,7 +499,7 @@
         },
         "tags": [],
         "style": {
-            "node_label": "Notify Team Piece",
+            "node_label": "Notify Team",
             "node_type": "default",
             "node_style": {
                 "backgroundColor": "#ebebeb"
