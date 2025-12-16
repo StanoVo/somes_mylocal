@@ -2,4 +2,4 @@
 REGISTRY_NAME = "stanovo"
 REPOSITORY_NAME = "somes_mylocal"
 REPOSITORY_LABEL = "SoMES Pieces Repository"
-VERSION = "0.2.3"
+VERSION = "0.2.4"
